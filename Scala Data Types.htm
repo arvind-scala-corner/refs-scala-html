@@ -1,0 +1,123 @@
+<!doctype html> 
+<head>
+<meta charset="utf-8">
+<title>Scala Data Types</title>
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+<base href="http://www.tutorialspoint.com" />
+<link rel="stylesheet" type="text/css" href="/scripts/print.css" />
+<link rel="stylesheet" type="text/css" href="/scripts/prettify.css" />
+<script type="text/javascript" src="/scripts/prettify.js"></script>
+</head>
+<body onload="prettyPrint()">
+<div id="print-wrapper">
+   <div id="print-area-wrapper">
+      <div class="clearfix" id="actual-print-area">
+             <h1 class="title">Scala Data Types</h1>
+             <a href="http://www.tutorialspoint.com/scala/scala_data_types.htm" id="print-source">http://www.tutorialspoint.com/scala/scala_data_types.htm</a><div id="page-print-copy">Copyright &copy; tutorialspoint.com</div>
+             <div style="clear:both"></div>
+             <br>
+	     <div id="page-content">
+<p>Scala has all the same data types as Java, with the same memory footprint and precision. Following is the table giving detail about all the data types available in Scala:</p>
+<table class="src">
+<tr><th style="width:20%">Data Type</th><th>Description</th></tr>
+<tr><td>Byte</td><td>8 bit signed value. Range from -128 to 127</td></tr>
+<tr><td>Short</td><td>16 bit signed value. Range -32768 to 32767</td></tr>
+<tr><td>Int</td><td>32 bit signed value. Range -2147483648 to 2147483647</td></tr>
+<tr><td>Long</td><td>64 bit signed value. -9223372036854775808 to 9223372036854775807</td></tr>
+<tr><td>Float</td><td>32 bit IEEE 754 single-precision float</td></tr>
+<tr><td>Double</td><td>64 bit IEEE 754 double-precision float</td></tr>
+<tr><td>Char</td><td>16 bit unsigned Unicode character. Range from U+0000 to U+FFFF</td></tr>
+<tr><td>String</td><td>A sequence of Chars</td></tr>
+<tr><td>Boolean</td><td>Either the literal true or the literal false</td></tr>
+<tr><td>Unit</td><td>Corresponds to no value</td></tr>
+<tr><td>Null</td><td>null or empty reference</td></tr>
+<tr><td>Nothing</td><td>The subtype of every other type; includes no values</td></tr>
+<tr><td>Any</td><td>The supertype of any type; any object is of type <i>Any</i></td></tr>
+<tr><td>AnyRef</td><td>The supertype of any reference type</td></tr>
+</table>
+<p>All the data types listed above are objects. There are no primitive types like in Java. This means that you can call methods on an Int, Long etc.</p>
+<h2>Scala Basic Literals:</h2>
+<p>The rules Scala uses for literals are simple and intuitive. This section explains all basic Scala Literals.</p>
+<h3>Integer Literals</h3>
+<p>Integer literals are usually of type Int, or of type Long when followed by a L or l suffix. Here are some integer literals:</p>
+<pre class="prettyprint">
+0
+035
+21 
+0xFFFFFFFF 
+0777L
+</pre>
+<h3>Floating Point Literals</h3>
+<p>Floating point literals are of type Float when followed by a floating point type suffix F or f, and are of type Double otherwise. Here are some floating point literals:</p>
+<pre class="prettyprint">
+0.0 
+1e30f 
+3.14159f 
+1.0e100
+.1
+</pre>
+<h3>Boolean Literals</h3>
+<p>The boolean literals <b>true</b> and <b>false</b> are members of type Boolean.</p>
+<h3>Symbol Literals</h3>
+<p>A symbol literal 'x is a shorthand for the expression <b>scala.Symbol("x")</b>. Symbol is a case class, which is defined as follows.</p>
+<pre class="prettyprint">
+package scala
+final case class Symbol private (name: String) {
+   override def toString: String = "'" + name
+}
+</pre>
+<h3>Character Literals</h3>
+<p>A character literal is a single character enclosed in quotes. The character is either a printable unicode character or is described by an escape sequence. Here are some character literals:</p>
+<pre class="prettyprint">
+'a' 
+'\u0041'
+'\n'
+'\t'
+</pre>
+<h3>String Literals</h3>
+<p>A string literal is a sequence of characters in double quotes. The characters are either printable unicode character or are described by escape sequences. Here are some string literals:</p>
+<pre class="prettyprint">
+"Hello,\nWorld!"
+"This string contains a \" character."
+</pre>
+<h3>Multi-Line Strings</h3>
+<p>A multi-line string literal is a sequence of characters enclosed in triple quotes """ ... """. The sequence of characters is arbitrary, except that it may contain three or more consuctive quote characters only at the very end.</p>
+<p>Characters must not necessarily be printable; newlines or other control characters are also permitted. Here is a multi-line string literal:</p>
+<pre class="prettyprint">
+"""the present string
+spans three
+lines."""
+</pre>
+<h3>The Null Value</h3>
+<p>The null value is of type <b>scala.Null</b>, and is thus compatible with every reference type. It denotes a reference value which refers to a special "null" object.</p>
+<h2>Escape Sequences:</h2>
+<p>The following escape sequences are recognized in character and string literals.</p>
+<table class="src">
+<tr><th style="width:20%">Escape Sequences</th><th>Unicode</th><th>Description</th></tr>
+<tr><td>\b</td><td>\u0008</td><td> backspace BS</td></tr>
+<tr><td>\t</td><td>\u0009</td><td> horizontal tab HT</td></tr>
+<tr><td>\n</td><td>\u000c</td><td> formfeed FF</td></tr>
+<tr><td>\f</td><td>\u000c</td><td> formfeed FF</td></tr>
+<tr><td>\r</td><td>\u000d</td><td>carriage return CR</td></tr>
+<tr><td>\"</td><td>\u0022</td><td> double quote "</td></tr>
+<tr><td>\'</td><td>\u0027</td><td> single quote .</td></tr>
+<tr><td>\\</td><td>\u005c</td><td>backslash \</td></tr>
+</table>
+<p>A character with Unicode between 0 and 255 may also be represented by an octal escape, i.e. a backslash '\' followed by a sequence of up to three octal characters. Following is the example to show few escape sequence characters:</p>
+<pre class="prettyprint">
+object Test {
+   def main(args: Array[String]) {
+      println("Hello\tWorld\n\n" );
+   }
+} 
+</pre>
+<p>When the above code is compiled and executed, it produces following result:</p>
+<pre class="prettyprint">
+Hello   World
+</pre>
+         </div>
+      </div>
+   </div>
+</div>
+</body>
+</html>

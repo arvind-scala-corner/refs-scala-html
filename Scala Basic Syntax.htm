@@ -1,0 +1,171 @@
+<!doctype html> 
+<head>
+<meta charset="utf-8">
+<title>Scala Basic Syntax</title>
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+<base href="http://www.tutorialspoint.com" />
+<link rel="stylesheet" type="text/css" href="/scripts/print.css" />
+<link rel="stylesheet" type="text/css" href="/scripts/prettify.css" />
+<script type="text/javascript" src="/scripts/prettify.js"></script>
+</head>
+<body onload="prettyPrint()">
+<div id="print-wrapper">
+   <div id="print-area-wrapper">
+      <div class="clearfix" id="actual-print-area">
+             <h1 class="title">Scala Basic Syntax</h1>
+             <a href="http://www.tutorialspoint.com/scala/scala_basic_syntax.htm" id="print-source">http://www.tutorialspoint.com/scala/scala_basic_syntax.htm</a><div id="page-print-copy">Copyright &copy; tutorialspoint.com</div>
+             <div style="clear:both"></div>
+             <br>
+	     <div id="page-content">
+<p>If you have good understanding on Java then it will be very easy for you to learn Scala. The biggest syntactic difference between Scala and Java is that the ; line end character is optional. When we consider a Scala program it can be defined as a collection of objects that communicate via invoking each others methods. Let us now briefly look into what do class, object, methods and instant variables mean.</p>
+<ul >
+<li><p><b>Object -</b> Objects have states and behaviors. Example: A dog has states-color, name, breed as well as behaviors -wagging, barking, eating. An object is an instance of a class. </p></li>
+<li><p><b>Class -</b> A class can be defined as a template/ blue print that describe the behaviors/states that object of its type support.</p></li>
+<li><p><b>Methods -</b> A method is basically a behavior. A class can contain many methods. It is in methods where the logics are written, data is manipulated and all the actions are executed.</p></li>
+<li><p><b>Fields -</b> Each object has its unique set of instant variables which are called fields. An object's state is created by the values assigned to these fields.</p></li>
+</ul>
+<h2>First Scala Program:</h2>
+<h3>Interactive Mode Programming:</h3>
+<p>Invoking the interpreter without passing a script file as a parameter brings up the following prompt:</p>
+<pre class="prettyprint">
+C:\&gt;scala
+Welcome to Scala version 2.9.0.1
+Type in expressions to have them evaluated.
+Type :help for more information.
+
+scala&gt;
+</pre>
+<p>Type the following text to the right of the Scala prompt and press the Enter key:</p>
+<pre class="prettyprint">
+scala&gt; println("Hello, Scala!");
+</pre>
+<p>This will produce following result:</p>
+<pre class="prettyprint">
+Hello, Scala!
+</pre>
+<h3>Script Mode Programming :</h3>
+<p>Let us look at a simple code that would print the words <i>Hello, World!</i>.</p>
+<pre class="prettyprint">
+object HelloWorld {
+   /* This is my first java program.  
+    * This will print 'Hello World' as the output
+    */
+   def main(args: Array[String]) {
+      println("Hello, world!") // prints Hello World
+   }
+}
+</pre>
+<p>Let's look at how to save the file, compile and run the program. Please follow the steps given below:</p>
+<ol >
+<li><p>Open notepad and add the code as above.</p></li>
+<li><p>Save the file as:  HelloWorld.scala.</p></li>
+<li><p>Open a command prompt window and go o the directory where you saved the 	program file. Assume it is C:\&gt;</p></li>
+<li><p>Type 'scalac HelloWorld.scala' and press enter to compile your code. If there are no errors in your code the command prompt will take you to the next line.</p></li>
+<li><p>Above command will generate a few class files in the current directory. One of them will be called <b>HelloWorld.class</b>. This is a bytecode which will run on Java Virtual Machine (JVM).</p></li>
+<li><p>Now type 'scala HelloWorld' to run your program.</p></li>	
+<li><p>You will be able to see 'Hello, World!' printed on the window.</p></li>
+</ol>
+<pre class="prettyprint">
+C:\&gt; scalac HelloWorld.scala
+C:\&gt; scala HelloWorld
+Hello, World!
+</pre>
+<h2>Basic Syntax:</h2>
+<p>About Scala programs, it is very important to keep in mind the following points.</p>
+<ul >
+<li><p><b>Case Sensitivity - </b> Scala is case sensitive which means identifier <b>Hello</b> and <b>hello</b> would have different meaning in Scala.</p></li>
+<li><p><b>Class Names - </b> For all class names the first letter should be in Upper Case. <br /><br /> If several words are used to form a name of the class each inner words first letter should be in Upper Case.<br /><br /> Example <i>class MyFirstScalaClass </i></p></li>
+<li><p><b>Method Names - </b> All method names should start with a Lower Case letter.  <br /><br /> If several words are  used to form the name of the method, then each inner word's first letter should be in Upper Case.<br /><br /> Example <i>def myMethodName()</i></p></li>
+<li><p><b>Program File Name - </b> Name of the program file should exactly match the object name.  <br /><br /> When saving the file you should save it using the object name (Remember scala is case sensitive) and append '.scala' to the end of the name. (if the file name and the object name do not match your program will not compile).<br /><br /> Example : Assume 'HelloWorld' is the object  name. Then the file should be saved as <i>'HelloWorld.scala'</i></p></li>
+<li><p><b>def main(args: Array[String]) -</b> Scala program processing starts from the main() method which is a mandatory part of every Scala Program.</p></li>
+</ul>
+<h2>Scala Identifiers:</h2>
+<p>All Scala components require names. Names used for objects, classes, variables and methods are called identifiers. A keyword cannot be used as an identifier and identifiers are case sensitive. There are following four type of identifiers supported by Scala:</p>
+<h3>Alphanumeric identifiers</h3>
+<p>An alphanumeric identifier starts with a letter or underscore, which can be followed by further letters, digits, or underscores. The '$' character is reserved keyword in Scala and should not be used in identifiers. Following are legal alphanumeric identifiers:</p>
+<pre class="prettyprint">
+age, salary, _value,  __1_value
+</pre>
+<p>Following are illegal identifiers:</p>
+<pre class="prettyprint">
+$salary, 123abc, -salary
+</pre>
+<h3>Operator identifiers</h3>
+<p>An operator identifier consists of one or more operator characters. Operator characters are printable ASCII characters such as +, :, ?, ~ or #. Following are legal operator identifiers:</p>
+<pre class="prettyprint">
++ ++ ::: &lt;?&gt; :&gt;
+</pre>
+<p>The Scala compiler will internally "mangle" operator identifiers to turn them into legal Java identifiers with embedded $ characters. For instance, the identifier :-&gt; would be represented internally as $colon$minus$greater.</p>
+<h3>Mixed identifiers</h3>
+<p>An mixed identifier consists of an alphanumeric identifier, which is followed by an underscore and an operator identifier. Following are legal mixed identifiers:</p>
+<pre class="prettyprint">
+unary_+,  myvar_=
+</pre>
+<p>Here unary_+ used as a method name defines a unary + operator and myvar_= used as method name defines an assignment operator.</p>
+<h3>Literal identifiers</h3>
+<p>An literal identifier is an arbitrary string enclosed in back ticks (` . . . `). Following are legal literal identifiers:</p>
+<pre class="prettyprint">
+`x` `&lt;clinit&gt;` `yield`
+</pre>
+<h2>Scala Keywords:</h2>
+<p>The following list shows the reserved words in Scala. These reserved words may not be used as constant or variable or any other identifier names.</p>
+<table class="src">
+<tr><td>abstract</td><td>case</td><td>catch</td><td>class</td></tr>
+<tr><td>def</td><td>do</td><td>else</td><td>extends</td></tr>
+<tr><td>false</td><td>final</td><td>finally</td><td>for</td></tr>
+<tr><td>forSome</td><td>if</td><td>implicit</td><td>import</td></tr>
+<tr><td>lazy</td><td>match</td><td>new</td><td>null</td></tr>
+<tr><td>object</td><td>override</td><td>package</td><td>private</td></tr>
+<tr><td>protected</td><td>return</td><td>sealed</td><td>super</td></tr>
+<tr><td>this</td><td>throw</td><td>trait</td><td>try</td></tr>
+<tr><td>true</td><td>type</td><td>val</td><td>var</td></tr>
+<tr><td>while</td><td>with</td><td>yield</td><td>&nbsp;</td></tr>
+<tr><td>-</td><td>:</td><td>=</td><td>=&gt;</td></tr>
+<tr><td>&lt;-</td><td>&lt;:</td><td>&lt;%</td><td>&gt;:</td></tr>
+<tr><td>#</td><td>@</td><td></td><td></td></tr>
+</table>
+<h2>Comments in Scala</h2>
+<p>Scala supports single line and multi-line comments very similar to Java. Multi-line comments may be nested, but are required to be properly nested. All characters available inside any comment are ignored by Scala compiler.</p>
+<pre class="prettyprint">
+object HelloWorld {
+   /* This is my first java program.  
+    * This will print 'Hello World' as the output
+    * This is an example of multi-line comments.
+    */
+   def main(args: Array[String]) {
+      // Prints Hello World
+      // This is also an example of single line comment.
+      println("Hello, world!") 
+   }
+}
+</pre>
+<h2>Blank Lines and Whitespace:</h2>
+<p>A line containing only whitespace, possibly with a comment, is known as a blank line, and Scala totally ignores it. Tokens may be separated by whitespace characters and/or comments.</p>
+<h2>Newline Characters:</h2>
+<p>Scala is a line-oriented language where statements may be terminated by semicolons (;) or newlines. A semicolon at the end of a statement is usually optional. You can type one if you want but you don.t have to if the statement appears by itself on a single line. On the other hand, a semicolon is required if you write multiple statements on a single line:</p>
+<pre class="prettyprint">
+val s = "hello"; println(s)
+</pre>
+<h2>Scala Packages:</h2>
+<p>A package is a named module of code. For example, the Lift utility package is net.liftweb.util. The package declaration is the first non-comment line in the source file as follows:</p>
+<pre class="prettyprint">
+package com.liftcode.stuff
+</pre>
+<p>Scala packages can be imported so that they can be referenced in the current compilation scope. The following statement imports the contents of the scala.xml package:</p>
+<pre class="prettyprint">
+import scala.xml._
+</pre>
+<p>You can import a single class and object, for example, HashMap from the scala.collection.mutable package:</p>
+<pre class="prettyprint">
+import scala.collection.mutable.HashMap
+</pre>
+<p>You can import more than one class or object from a single package, for example, TreeMap and TreeSet from the scala.collection.immutable package:</p>
+<pre class="prettyprint">
+import scala.collection.immutable.{TreeMap, TreeSet}
+</pre>
+         </div>
+      </div>
+   </div>
+</div>
+</body>
+</html>

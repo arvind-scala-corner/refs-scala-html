@@ -1,0 +1,93 @@
+<!doctype html> 
+<head>
+<meta charset="utf-8">
+<title>Scala Access Modifiers</title>
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+<base href="http://www.tutorialspoint.com" />
+<link rel="stylesheet" type="text/css" href="/scripts/print.css" />
+<link rel="stylesheet" type="text/css" href="/scripts/prettify.css" />
+<script type="text/javascript" src="/scripts/prettify.js"></script>
+</head>
+<body onload="prettyPrint()">
+<div id="print-wrapper">
+   <div id="print-area-wrapper">
+      <div class="clearfix" id="actual-print-area">
+             <h1 class="title">Scala Access Modifiers</h1>
+             <a href="http://www.tutorialspoint.com/scala/scala_access_modifiers.htm" id="print-source">http://www.tutorialspoint.com/scala/scala_access_modifiers.htm</a><div id="page-print-copy">Copyright &copy; tutorialspoint.com</div>
+             <div style="clear:both"></div>
+             <br>
+	     <div id="page-content">
+<p>Members of packages, classes, or objects can be labeled with the access modifiers <b>private</b> and <b>protected</b> and if we are not using either of these two keywords then access will be assumed as <b>public</b>. These modifiers restrict accesses to the members to certain regions of code. To use a access modifier, you include its keyword in the definition of members of package, classe, or object as we will see in the following section.</p>
+<h2>Private members:</h2>
+<p>A <b>private</b> member is visible only inside the class or object that contains the member definition. Following is the example:</p>
+<pre class="prettyprint">
+class Outer {
+   class Inner {
+      private def f() { println("f") }
+      class InnerMost {
+         f() // OK
+      }
+   }
+   (new Inner).f() // Error: f is not accessible
+}
+</pre>
+<p>In Scala, the access (new Inner).f() is illegal because f is declared private in Inner and the access is not from within class Inner. By contrast, the first access to f in class InnerMost is OK, because that access is contained in the body of class Inner. Java would permit both accesses because it lets an outer class access private members of its inner classes.</p>
+<h2>Protected members:</h2>
+<p>A <b>protected</b> member is only accessible from subclasses of the class in which the member is defined. Following is the example:</p>
+<pre class="prettyprint">
+package p {
+   class Super {
+      protected def f() { println("f") }
+   }
+   class Sub extends Super {
+      f()
+   }
+   class Other {
+     (new Super).f() // Error: f is not accessible
+   }
+}
+</pre>
+<p>The access to f in class Sub is OK because f is declared protected in Super and Sub is a subclass of Super. By contrast the access to f in Other is not permitted, because Other does not inherit from Super. In Java, the latter access would be still permitted because Other is in the same package as Sub.</p>
+<h2>Public members:</h2>
+<p>Every member not labeled private or protected is public. There is no explicit modifier for public members. Such members can be accessed from anywhere. Following is the example:</p>
+<pre class="prettyprint">
+class Outer {
+   class Inner {
+      def f() { println("f") }
+      class InnerMost {
+         f() // OK
+      }
+   }
+   (new Inner).f() // OK because now f() is public
+}
+</pre>
+<h2>Scope of protection:</h2>
+<p>Access modifiers in Scala can be augmented with qualifiers. A modifier of the form private[X] or protected[X] means that access is private or protected "up to" X, where X designates some enclosing package, class or singleton object. Consider the following example:</p>
+<pre class="prettyprint">
+package society {
+   package professional {
+      class Executive {
+         private[<i>professional</i>] var workDetails = null
+         private[<i>society</i>] var friends = null
+         private[<i>this</i>] var secrets = null
+
+         def help(another : Executive) {
+            println(another.workDetails)
+            println(another.secrets) //ERROR
+         }
+      }
+   }
+}
+</pre>
+<p>Note the following points from the above example:</p>
+<ul >
+<li><p>Variable <i>workDetails</i> will be accessible to any class within the enclosing package <i>professional</i>.</p></li>
+<li><p>Variable <i>friends</i> will be accessible to any class within the enclosing package <i>society</i>.</p></li>
+<li><p>Variable <i>secrets</i>  will be accessible only on the implicit object within instance methods (this).</p></li>
+</ul>
+         </div>
+      </div>
+   </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!doctype html> 
+<head>
+<meta charset="utf-8">
+<title>Scala Environment Setup</title>
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+<base href="http://www.tutorialspoint.com" />
+<link rel="stylesheet" type="text/css" href="/scripts/print.css" />
+<link rel="stylesheet" type="text/css" href="/scripts/prettify.css" />
+<script type="text/javascript" src="/scripts/prettify.js"></script>
+</head>
+<body onload="prettyPrint()">
+<div id="print-wrapper">
+   <div id="print-area-wrapper">
+      <div class="clearfix" id="actual-print-area">
+             <h1 class="title">Scala Environment Setup</h1>
+             <a href="http://www.tutorialspoint.com/scala/scala_environment_setup.htm" id="print-source">http://www.tutorialspoint.com/scala/scala_environment_setup.htm</a><div id="page-print-copy">Copyright &copy; tutorialspoint.com</div>
+             <div style="clear:both"></div>
+             <br>
+	     <div id="page-content">
+<p>The Scala language can be installed on any Unix-like or Windows system. Before you start installing Scala on your machine, you must have Java 1.5 or greater installed on your computer.</p>
+<h2>Installing Scala on Windows:</h2>
+<h3>Step (1): JAVA Setup:</h3>
+<p>First, you must set the JAVA_HOME environment variable and add the JDK's bin directory to your PATH variable. To verify if everything is fine, at command prompt, type <b>java -version</b> and press Enter. You should see something like the following:</p>
+<pre class="prettyprint">
+C:\&gt;java -version
+java version "1.6.0_15"
+Java(TM) SE Runtime Environment (build 1.6.0_15-b03)
+Java HotSpot(TM) 64-Bit Server VM (build 14.1-b02, mixed mode)
+
+C:\&gt;
+</pre>
+<p>Next, test to see that the Java compiler is installed. Type <b>javac -version</b>. You should see something like the following:</p>
+<pre class="prettyprint">
+C:\&gt;javac -version
+javac 1.6.0_15
+
+C:\&gt;
+</pre>
+<h3>Step (2): Scala Setup:</h3>
+<p>Next you can download Scala from <a rel="nofollow" target="_blank" href="http://www.scala-lang.org/downloads">http://www.scala-lang.org/downloads</a>. At the time of writing this tutorial I downloaded <i>scala-2.9.0.1-installer.jar</i> and put it in C:/&gt; directory. Make sure you have admin privilege to  proceed. Now execute the following command at command prompt:</p>
+<pre class="prettyprint">
+C:\&gt;java -jar scala-2.9.0.1-installer.jar
+
+C:\&gt;
+</pre>
+<p>Above command will display an installation wizard which will guide you to install scala on you windows machine. During installation, it will ask for license agreement, simply accept it and further it will ask a path where scala will be installed. I selected default given path <i>C:\Program Files\scala</i>, you can select a suitable path as per your convenience. Finally, open a new command prompt and type <b>scala -version</b> and press Enter. You should see the following:</p> 
+<pre class="prettyprint">
+C:\&gt;scala -version
+Scala code runner version 2.9.0.1 -- Copyright 2002-2011, LAMP/EPFL
+
+C:\&gt;
+</pre>
+<p>Congratulations, you have installed Scala on your Windows machine. Next section will teach you how to install scala on your Mac OS X and Unix/Linux machines.</p>
+<h2>Installing Scala on Mac OS X and Linux</h2>
+<h3>Step (1): JAVA Setup:</h3>
+<p>Make sure you have got the Java JDK 1.5 or greater installed on your computer and set JAVA_HOME environment variable and add the JDK's bin directory to your PATH variable. To verify if everything is fine, at command prompt, type <b>java -version</b> and press Enter. You should see something like the following:</p>
+<pre class="prettyprint">
+$java -version
+java version "1.5.0_22"
+Java(TM) 2 Runtime Environment, Standard Edition (build 1.5.0_22-b03)
+Java HotSpot(TM) Server VM (build 1.5.0_22-b03, mixed mode)
+$
+</pre>
+<p>Next, test to see that the Java compiler is installed. Type <b>javac -version</b>. You should see something like the following:</p>
+<pre class="prettyprint">
+$javac -version
+javac 1.5.0_22
+javac: no source files
+Usage: javac &lt;options&gt; &lt;source files&gt;
+................................................
+
+$
+</pre>
+<h3>Step (2): Scala Setup:</h3>
+<p>Next you can download Scala from <a rel="nofollow" target="_blank" href="http://www.scala-lang.org/downloads">http://www.scala-lang.org/downloads</a>. At the time of writing this tutorial I downloaded <i>scala-2.9.0.1-installer.jar</i> and put it in /tmp directory. Make sure you have admin privilege to  proceed. Now execute the following command at command prompt:</p>
+<pre class="prettyprint">
+$java -jar scala-2.9.0.1-installer.jar
+Welcome to the installation of scala 2.9.0.1!
+The homepage is at: http://scala-lang.org/
+press 1 to continue, 2 to quit, 3 to redisplay
+1
+................................................
+[ Starting to unpack ]
+[ Processing package: Software Package Installation (1/1) ]
+[ Unpacking finished ]
+[ Console installation done ]
+
+$
+</pre>
+<p>During installation, it will ask for license agreement, to accept it type 1 and it will ask a path where scala will be installed. I entered <i>/usr/local/share</i>, you can select a suitable path as per your convenience. Finally, open a new command prompt and type <b>scala -version</b> and press Enter. You should see the following:</p>
+<pre class="prettyprint">
+$scala -version
+Scala code runner version 2.9.0.1 -- Copyright 2002-2011, LAMP/EPFL
+
+$
+</pre>
+<p>Congratulations, you have installed Scala on your Unix/Linux machine.</p>
+         </div>
+      </div>
+   </div>
+</div>
+</body>
+</html>

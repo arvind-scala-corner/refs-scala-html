@@ -1,0 +1,101 @@
+<!doctype html> 
+<head>
+<meta charset="utf-8">
+<title>Scala Extractors</title>
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+<base href="http://www.tutorialspoint.com" />
+<link rel="stylesheet" type="text/css" href="/scripts/print.css" />
+<link rel="stylesheet" type="text/css" href="/scripts/prettify.css" />
+<script type="text/javascript" src="/scripts/prettify.js"></script>
+</head>
+<body onload="prettyPrint()">
+<div id="print-wrapper">
+   <div id="print-area-wrapper">
+      <div class="clearfix" id="actual-print-area">
+             <h1 class="title">Scala Extractors</h1>
+             <a href="http://www.tutorialspoint.com/scala/scala_extractors.htm" id="print-source">http://www.tutorialspoint.com/scala/scala_extractors.htm</a><div id="page-print-copy">Copyright &copy; tutorialspoint.com</div>
+             <div style="clear:both"></div>
+             <br>
+	     <div id="page-content">
+<p>An extractor in Scala is an object that has a method called <b>unapply</b> as one of its members. The purpose of that unapply method is to match a value and take it apart. Often, the extractor object also defines a dual method <b>apply</b> for building values, but this is not required.</p>
+<p>Following example shows an extractor object for email addresses:</p>
+<pre class="prettyprint">
+object Test {
+   def main(args: Array[String]) {
+      
+      println ("Apply method : " + apply("Zara", "gmail.com"));
+      println ("Unapply method : " + unapply("Zara@gmail.com"));
+      println ("Unapply method : " + unapply("Zara Ali"));
+
+   }
+   // The injection method (optional)
+   def apply(user: String, domain: String) = {
+      user +"@"+ domain
+   }
+
+   // The extraction method (mandatory)
+   def unapply(str: String): Option[(String, String)] = {
+      val parts = str split "@"
+      if (parts.length == 2){
+         Some(parts(0), parts(1)) 
+      }else{
+         None
+      }
+   }
+}
+</pre>
+<p>This object defines both <b>apply</b> and <b>unapply</b> methods. The apply method has the same meaning as always: it turns Test into an object that can be applied to arguments in parentheses in the same way a method is applied. So you can write Test("Zara", "gmail.com") to construct the string "Zara@gmail.com".</p>
+<p>The <b>unapply</b> method is what turns Test class into an <b>extractor</b> and it reverses the construction process of <b>apply</b>. Where apply takes two strings and forms an email address string out of them, unapply takes an email address and returns potentially two strings: the <b>user</b> and the <b>domain</b> of the address.</p>
+<p>The <b>unapply</b> must also handle the case where the given string is not an email address. That's why unapply returns an Option-type over pairs of strings. Its result is either <b>Some(user, domain)</b> if the string str is an email address with the given user and domain parts, or None, if str is not an email address. Here are some examples:</p>
+<pre class="prettyprint">
+unapply("Zara@gmail.com") equals Some("Zara", "gmail.com")
+unapply("Zara Ali") equals None
+</pre>
+<p>When the above code is compiled and executed, it produces following result:</p>
+<pre class="prettyprint">
+C:/&gt;scalac Test.scala
+C:/&gt;scala Test
+Apply method : Zara@gmail.com
+Unapply method : Some((Zara,gmail.com))
+Unapply method : None
+
+C:/&gt;
+</pre>
+<h2>Pattern Matching with Extractors:</h2>
+<p>When an instance of a class is followed by parentheses with a list of zero or more parameters, the compiler invokes the <b>apply</b> method on that instance. We can define apply both in objects and in classes.</p>
+<p>As mentioned above, the purpose of the <b>unapply</b> method is to extract a specific value we are looking for. It does the opposite operation <b>apply</b> does. When comparing an extractor object using the <b>match</b> statement the <b>unapply</b> method will be automatically executed as shown below:</p>
+<pre class="prettyprint">
+object Test {
+   def main(args: Array[String]) {
+      
+      val x = Test(5)
+      //apply is invoked... the value 10 is returend
+      println(x)
+
+      x match
+      {
+         case Test(num) =&gt; println(x+" is bigger two times than "+num)
+         //unapply is invoked
+         case _ =&gt; println("i cannot calculate")
+      }
+
+   }
+   def apply(x: Int) = x*2
+   def unapply(z: Int): Option[Int] = if (z%2==0) Some(z/2) else None
+}
+</pre>
+<p>When the above code is compiled and executed, it produces following result:</p>
+<pre class="prettyprint">
+C:/&gt;scalac Test.scala
+C:/&gt;scala Test
+10
+10 is bigger two times than 5
+
+C:/&gt;
+</pre>
+         </div>
+      </div>
+   </div>
+</div>
+</body>
+</html>
